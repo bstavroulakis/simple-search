@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+        <script src="../../webcomponentsjs/webcomponents-lite.min.js"></script>
+        <link rel="import" href="../../simple-search/simple-search.html">
+        <style is="custom-style">
+            :root{
+                --search-primary-color: orange;
+                --paper-input-container-color: orange;
+                --paper-input-container-focus-color: orange;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <div style="width:700px">
+                <p>Static Mode</p>
+                <simple-search static-open></simple-search>
+            </div>
+            <div style="width:700px">
+                <p>Dynamic Mode</p>
+                <simple-search></simple-search>
+            </div>
+        </div>
+        <script>
+            var searchElements = document.querySelectorAll("simple-search");
+            for(var i = 0; i < searchElements.length; i++){
+                searchElements[i].addEventListener("search", function(e){
+                    alert(e.detail);
+                });
+            }
+        </script>
+    </body>
+</html>

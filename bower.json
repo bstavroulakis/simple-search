@@ -1,0 +1,32 @@
+{
+  "name": "simple-search",
+  "homepage": "https://github.com/bstavroulakis/simple-search",
+  "authors": [
+    "bstavroulakis <bstavroulakis@gmail.com>"
+  ],
+  "version": "0.0.1",
+  "dependencies": {
+    "polymer": "Polymer/polymer#1.6.0",
+    "paper-input": "PolymerElements/paper-input#1.1.15",
+    "iron-a11y-keys": "PolymerElements/iron-a11y-keys#1.0.6",
+    "iron-icons": "PolymerElements/iron-icons#1.1.3",
+    "paper-icon-button": "PolymerElements/paper-icon-button#1.1.2",
+    "iron-flex-layout": "PolymerElements/iron-flex-layout#1.3.1"
+  },
+  "devDependencies": {
+    "web-component-tester": "*",
+    "iron-component-page": "PolymerElements/iron-component-page#1.1.7"
+  },
+  "description": "Simple Search Box",
+  "main": "simple-search.html",
+  "keywords": [
+    "search-element", "simple-search"
+  ],
+  "license": "MIT",
+  "private": false,
+  "ignore": [
+    "**/.*",
+    "bower_components",
+    "test"
+  ]
+}

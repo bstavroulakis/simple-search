@@ -1,0 +1,122 @@
+<link rel="import" href="../paper-input/paper-input.html" />
+<link rel="import" href="../iron-icons/iron-icons.html" />
+<link rel="import" href="../paper-icon-button/paper-icon-button.html" />
+<link rel="import" href="../iron-a11y-keys/iron-a11y-keys.html" />
+<link rel="import" href="simple-search-styles.html" />
+
+<!--
+
+### General Info `<simple-search>`
+
+`<simple-search>` shows a search input area on your page.
+
+To use, insert `<simple-search>` in the body:
+
+    <body>
+      <simple-search></simple-search>
+
+Example:
+
+To show the search 
+```
+    <body>
+      <simple-search static-open></simple-search>
+``` 
+
+### Documentation Page
+
+http://bstavroulakis.github.io/simple-search/components/simple-search/
+
+### Demo Page
+
+http://bstavroulakis.github.io/simple-search/components/simple-search/demo/
+
+### Styling
+The following custom properties and mixins are available for styling:
+Custom property | Description | Default
+
+----------------------------|--------------------------------------------|----------
+
+`--search-primary-color` | The color of the buttons | `#303F9F`
+
+-->
+
+<dom-module id="simple-search">
+    <template>
+        <style include="simple-search-styles"></style>
+        <iron-a11y-keys target="{{searchInput}}" keys="enter" on-keys-pressed="searchAction"></iron-a11y-keys>
+        <div class$="{{_toggleClass}}">
+            <div class="flex-horizontal">
+                <div>
+                    <template is="dom-if" if="{{!staticOpen}}">
+                        <div class="trigger-open">
+                            <paper-icon-button on-tap="toggle" icon="icons:search"></paper-icon-button>
+                        </div>
+                        <div class="trigger-close">
+                            <paper-icon-button on-tap="toggle" icon="close"></paper-icon-button>
+                        </div>
+                    </template>
+                </div>
+                <div class="input-area flexchild">
+                    <paper-input id="searchInput" no-label-float placeholder="Search"></paper-input>
+                </div>
+                <div class="trigger-search">
+                    <paper-icon-button on-tap="searchAction" icon="icons:search"></paper-icon-button>
+                </div>
+            </div>
+        </div>
+    </template>
+</dom-module>
+
+<script>
+    Polymer({
+        is: 'simple-search',
+        properties:{
+            /** If the search area is visible or not. */
+            isOpen:{
+                type: Boolean,
+                value: false,
+                observer: "_isOpenChanged"
+            },
+            /** If this is true the search area will always show. Can be set with the static-open attribute. */
+            staticOpen:{
+                type: Boolean,
+                value: false
+            },
+            /** The class once the state isOpen is set to true. */
+            _toggleClass:{
+                type: String,
+                value: ""
+            }
+        },
+        /**
+         * Toggles the search area
+         *
+         * @return {void} No return parameter.
+         */
+        toggle: function(){
+            this.set("isOpen", !this.isOpen);
+            if(this.isOpen){
+                this.$$("#searchInput").value = "";
+                this.$$("#searchInput").focus();
+            }
+        },
+        _isOpenChanged: function(){
+            this._toggleClass = "";
+            if(this.isOpen){
+                this._toggleClass = "opened";
+            }
+        },
+        /**
+         * Fires the search event
+         *
+         * @return {void} No return parameter.
+         */
+        searchAction: function(){
+            this.fire("search", this.$$("#searchInput").value);
+        },
+        ready: function(){
+            this.isOpen = this.staticOpen;
+        }
+    })
+</script>
