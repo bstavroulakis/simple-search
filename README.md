@@ -1,3 +1,6 @@
+### Status
+[![Build Status](https://travis-ci.org/bstavroulakis/simple-search.svg?branch=master)](https://travis-ci.org/bstavroulakis/simple-search)
+
 ### General Info `<simple-search>`
 
 `<simple-search>` shows a search input area on your page.
