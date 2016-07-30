@@ -20,7 +20,7 @@
   "description": "Simple Search Box",
   "main": "simple-search.html",
   "keywords": [
-    "search-element", "simple-search"
+    "search-element", "simple-search", "web-components"
   ],
   "license": "MIT",
   "private": false,
